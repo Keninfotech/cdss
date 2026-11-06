@@ -1,0 +1,540 @@
+{
+  "_meta": {
+    "description": "Longitudinal patient records transcribed from the prescription / discharge-summary images stored in the project root. Each encounter points to its source image. Handwritten entries that could not be read with confidence are marked legibility='partial' or 'illegible' and keep the raw text so a clinician can verify them against the image.",
+    "transcribed_on": "2026-11-06",
+    "privacy_note": "Contains real patient documents. Phone numbers and street addresses visible in the images are intentionally NOT copied into this structured file. Do not publish this dataset."
+  },
+  "patients": [
+    {
+      "patient_id": "P001",
+      "name": "Asuntha Anandraj",
+      "aliases": ["Ms. Asuntha Anandraj", "Asuntha Anandray"],
+      "sex": "F",
+      "dob": "1957-05-03",
+      "dob_estimated": true,
+      "dob_note": "Estimated from pharmacy label age '68Y 3M 25D' on 28/08/2025.",
+      "identifiers": [
+        {"system": "SJMCH UHID", "value": "38191"}
+      ],
+      "allergies": [],
+      "allergy_status": "not documented",
+      "conditions": [
+        {"name": "Type 2 diabetes mellitus", "code": "diabetes", "source": "insulin + linagliptin therapy"},
+        {"name": "Hypertension", "code": "hypertension", "source": "amlodipine / cilnidipine / metoprolol therapy"},
+        {"name": "Hypothyroidism", "code": "hypothyroidism", "source": "levothyroxine therapy"},
+        {"name": "Chronic liver disease (CT suggestive)", "code": "chronic_liver_disease", "source": "Discharge summary: 'CT s/o CLD'"},
+        {"name": "CBD stent in situ / gallstone disease", "code": "biliary_disease", "source": "Discharge summary: lap. cholecystectomy planned for CBD stent removal"}
+      ],
+      "encounters": [
+        {
+          "encounter_id": "P001-E1",
+          "date": "2025-06-09",
+          "date_certain": false,
+          "date_note": "Inferred from encounter no. 902506090132; review booked for Mon 23/06/2025.",
+          "facility": "St. John's Medical College Hospital",
+          "department": "General Surgery (Unit 1)",
+          "doctor": "Dr. Cleeta Prasannan (PG Resident, Surgery)",
+          "type": "discharge_summary",
+          "source_image": "01_asuntha_discharge_summary_2025-06.jpg",
+          "reconciles_chronic_meds": true,
+          "diagnoses": ["CT s/o chronic liver disease (CLD)", "CBD stent in situ - laparoscopic cholecystectomy planned"],
+          "complaints": [],
+          "vitals": {},
+          "condition_at_discharge": "Stable",
+          "medications": [
+            {"raw": "T CEFUROXIME 500 MG PO 1-0-1 X 10 DAYS", "drug": "cefuroxime", "strength": "500 mg", "route": "PO", "frequency": "1-0-1", "duration": "10 days", "legibility": "clear"},
+            {"raw": "T PANTOPRAZOLE 40 MG PO 1-0-0 X 10 DAYS (B/F)", "drug": "pantoprazole", "strength": "40 mg", "route": "PO", "frequency": "1-0-0", "duration": "10 days", "instructions": "before food", "legibility": "clear"},
+            {"raw": "T PARACETAMOL 650 MG PO 1-1-1 X 5 DAYS", "drug": "paracetamol", "strength": "650 mg", "route": "PO", "frequency": "1-1-1", "duration": "5 days", "legibility": "clear"},
+            {"raw": "T THYRONORM 150 MCG PO 1-0-0", "drug": "thyronorm", "strength": "150 mcg", "route": "PO", "frequency": "1-0-0", "duration": "continue", "legibility": "clear"},
+            {"raw": "T AMLONG 5 MG PO 1-0-0", "drug": "amlong", "strength": "5 mg", "route": "PO", "frequency": "1-0-0", "duration": "continue", "legibility": "clear"},
+            {"raw": "INJ NOVOMIX 18 U -0- 18U", "drug": "novomix", "strength": "18 units", "route": "SC", "frequency": "18U-0-18U", "duration": "continue", "legibility": "clear"},
+            {"raw": "T LINAGLIPTIN 5 MG PO 1-0-0", "drug": "linagliptin", "strength": "5 mg", "route": "PO", "frequency": "1-0-0", "duration": "continue", "legibility": "clear"},
+            {"raw": "T METOPROLOL 25MG PO 1-0-1", "drug": "metoprolol", "strength": "25 mg", "route": "PO", "frequency": "1-0-1", "duration": "continue", "legibility": "clear"},
+            {"raw": "T CILACAR 10 MG PO 1-0-1", "drug": "cilacar", "strength": "10 mg", "route": "PO", "frequency": "1-0-1", "duration": "continue", "legibility": "clear"},
+            {"raw": "T SHELCAL PO 0-1-0", "drug": "shelcal", "strength": "", "route": "PO", "frequency": "0-1-0", "duration": "continue", "legibility": "clear"},
+            {"raw": "SYP CREMAFFIN 30 ML PO HS", "drug": "cremaffin", "strength": "30 ml", "route": "PO", "frequency": "HS", "duration": "continue", "legibility": "clear"},
+            {"raw": "THROMBOPHOBE OINT L/A 1-1-1", "drug": "thrombophobe", "strength": "", "route": "topical", "frequency": "1-1-1", "duration": "continue", "legibility": "clear"}
+          ],
+          "investigations_advised": [],
+          "plan": ["Review in Unit 1 Surgery OPD on Monday 23/06/2025", "Review in Gastroenterology OPD after laparoscopic cholecystectomy for CBD stent removal"],
+          "red_flags_documented": ["severe unbearable pain", "bleeding", "convulsions", "unresponsiveness", "loss of vision", "inability to drink liquids", "vomiting", "diarrhoea", "breathlessness", "palpitations", "jaundice", "absence of urine", "fever", "rash", "joint swelling", "behavioural change", "weakness/fatigue"]
+        },
+        {
+          "encounter_id": "P001-E2",
+          "date": "2025-08-28",
+          "date_certain": true,
+          "facility": "St. John's Medical College Hospital",
+          "department": "Surgery (IP SURG1) - Second Floor Private Ward, Bed 2150",
+          "doctor": "",
+          "type": "pharmacy_indent",
+          "source_image": "02_asuntha_pharmacy_indent_2025-08-28.jpg",
+          "reconciles_chronic_meds": false,
+          "diagnoses": ["Inpatient surgical admission (likely the planned laparoscopic cholecystectomy - inferred)"],
+          "complaints": [],
+          "vitals": {},
+          "medications": [
+            {"raw": "1) T. Cefuroxime 500mg -> 10", "drug": "cefuroxime", "strength": "500 mg", "route": "PO", "frequency": "1-0-1", "duration": "5 days", "quantity": 10, "legibility": "clear", "note": "Frequency/duration inferred from quantity 10 and the previous discharge regimen."},
+            {"raw": "2) Inj. Dalteparin 2500 IU -> 1", "drug": "dalteparin", "strength": "2500 IU", "route": "SC", "frequency": "stat", "duration": "stat", "quantity": 1, "legibility": "clear"}
+          ],
+          "other_items": ["Gloves x 1"],
+          "investigations_advised": [],
+          "plan": []
+        },
+        {
+          "encounter_id": "P001-E3",
+          "date": "2026-03-14",
+          "date_certain": true,
+          "facility": "St. John's Medical College Hospital",
+          "department": "Medicine (OPD)",
+          "doctor": "Dr. Geetha Ann Francis (Professor, Medicine)",
+          "type": "opd_prescription",
+          "source_image": "03_asuntha_opd_medicine_2026-03-14.jpg",
+          "reconciles_chronic_meds": true,
+          "diagnoses": [],
+          "complaints": [],
+          "vitals": {},
+          "medications": [
+            {"raw": "Inj HUMINSULIN 30/70 14-0-12 units (s/c) (B/F)", "drug": "huminsulin 30/70", "strength": "14/12 units", "route": "SC", "frequency": "14U-0-12U", "duration": "2 months", "instructions": "before food", "chronic": true, "legibility": "clear"},
+            {"raw": "Tab Thyronorm 150 mcg 1-0-0 (B/F) (4/7) Mon-Fri", "drug": "thyronorm", "strength": "150 mcg", "route": "PO", "frequency": "1-0-0", "duration": "2 months", "instructions": "before food; Mon-Fri only (5/7)", "chronic": true, "legibility": "partial", "note": "Strength read as 150 mcg (matches discharge summary); handwriting could also be 100."},
+            {"raw": "Tab Thyronorm 125 mcg 1-0-0 (B/F) (3/7) (Sat-Sun)", "drug": "thyronorm", "strength": "125 mcg", "route": "PO", "frequency": "1-0-0", "duration": "2 months", "instructions": "before food; Sat-Sun only", "chronic": true, "legibility": "clear"},
+            {"raw": "Tab Amlong 5 mg 1-0-0", "drug": "amlong", "strength": "5 mg", "route": "PO", "frequency": "1-0-0", "duration": "2 months", "chronic": true, "legibility": "clear"},
+            {"raw": "Tab Metoprolol XL 25 mg 1-0-0", "drug": "metoprolol xl", "strength": "25 mg", "route": "PO", "frequency": "1-0-0", "duration": "2 months", "chronic": true, "legibility": "clear"},
+            {"raw": "Tab LINAGLIPTIN 5 mg 1-0-0", "drug": "linagliptin", "strength": "5 mg", "route": "PO", "frequency": "1-0-0", "duration": "2 months", "chronic": true, "legibility": "clear"},
+            {"raw": "Tab RECLIDE 40 mg 1/2-0-0", "drug": "reclide", "strength": "40 mg", "route": "PO", "frequency": "1/2-0-0", "duration": "2 months", "chronic": true, "legibility": "clear"}
+          ],
+          "investigations_advised": [],
+          "plan": ["Review after 2 months"]
+        }
+      ]
+    },
+    {
+      "patient_id": "P002",
+      "name": "Philomena R",
+      "aliases": ["Mrs. Philomena R", "Philomena. R."],
+      "sex": "F",
+      "dob": "1954-01-01",
+      "dob_estimated": false,
+      "identifiers": [
+        {"system": "St. Philomena's UHID", "value": "26014411"}
+      ],
+      "allergies": [],
+      "allergy_status": "No known allergies",
+      "height_cm": 150,
+      "conditions": [
+        {"name": "Type 2 diabetes mellitus", "code": "diabetes", "source": "Mahesh Health Care 26/04/2026: 'DM'"},
+        {"name": "Hypertension", "code": "hypertension", "source": "Mahesh Health Care 26/04/2026: 'HTN'"},
+        {"name": "Left knee arthritis", "code": "osteoarthritis", "source": "Mahesh Health Care 26/04/2026"},
+        {"name": "Left lower limb cellulitis", "code": "cellulitis", "source": "St. Philomena's 02/05/2026 and 18/05/2026"},
+        {"name": "Left lower limb varicose veins", "code": "varicose_veins", "source": "St. Philomena's 18/05/2026"}
+      ],
+      "encounters": [
+        {
+          "encounter_id": "P002-E1",
+          "date": "2026-04-26",
+          "date_certain": true,
+          "facility": "Mahesh Health Care, Electronic City",
+          "department": "Internal Medicine",
+          "doctor": "Dr. Mahesh Kumar J M (MD Internal Medicine)",
+          "type": "clinic_prescription",
+          "source_image": "04_philomena_clinic_2026-04-26.jpg",
+          "reconciles_chronic_meds": true,
+          "diagnoses": ["Diabetes mellitus", "Hypertension", "Left knee arthritis"],
+          "complaints": ["Left knee pain"],
+          "vitals": {"bp_systolic": 140, "bp_diastolic": 90, "random_glucose_mg_dl": 184, "weight_kg": 60.15, "pulse": 84, "spo2": 96},
+          "medications": [
+            {"raw": "T- GANATON 50 1-1-1", "drug": "ganaton", "strength": "50 mg", "route": "PO", "frequency": "1-1-1", "duration": "1 month", "legibility": "clear"},
+            {"raw": "T- RAZO(?) 20 1-0-1", "drug": "razo", "strength": "20 mg", "route": "PO", "frequency": "1-0-1", "duration": "1 month", "legibility": "partial", "note": "Brand read as Razo 20 (rabeprazole); verify against image."},
+            {"raw": "T- GLYCOMET GP 2/850 1-0-1", "drug": "glycomet gp 2", "strength": "2/850 mg", "route": "PO", "frequency": "1-0-1", "duration": "1 month", "legibility": "clear"},
+            {"raw": "T- TELMA (?) 1-0-0", "drug": "telma", "strength": "", "route": "PO", "frequency": "1-0-0", "duration": "1 month", "legibility": "partial", "note": "Telmisartan brand; strength/suffix not legible."},
+            {"raw": "T- ROZUCOR (?) 0-0-1", "drug": "rozucor", "strength": "", "route": "PO", "frequency": "0-0-1", "duration": "1 month", "legibility": "partial", "note": "Rosuvastatin brand; suffix (e.g. ASP / Gold) not legible - may contain aspirin/clopidogrel."},
+            {"raw": "T- SITA..(?) M 1-0-1", "drug": "sitagliptin-metformin", "strength": "", "route": "PO", "frequency": "1-0-1", "duration": "1 month", "legibility": "partial", "note": "Read as a sitagliptin + metformin combination ('...M'); verify brand."},
+            {"raw": "T- DYTOR PLUS 20 1-0-0", "drug": "dytor plus", "strength": "20 mg", "route": "PO", "frequency": "1-0-0", "duration": "1 month", "legibility": "clear"},
+            {"raw": "T- AMMU..(?) FORTE 0-0-1", "drug": "unknown", "strength": "", "route": "PO", "frequency": "0-0-1", "duration": "1 month", "legibility": "illegible", "note": "Brand name not legible."},
+            {"raw": "Inj DEPO(-MEDROL) 80 IM (given in clinic)", "drug": "depo-medrol", "strength": "80 mg", "route": "IM", "frequency": "stat", "duration": "stat", "administered_in_clinic": true, "legibility": "partial"},
+            {"raw": "Inj VOVERAN IM (given in clinic)", "drug": "voveran", "strength": "", "route": "IM", "frequency": "stat", "duration": "stat", "administered_in_clinic": true, "legibility": "clear"},
+            {"raw": "Inj EMSET 4 (given in clinic)", "drug": "emset", "strength": "4 mg", "route": "IV", "frequency": "stat", "duration": "stat", "administered_in_clinic": true, "legibility": "partial"},
+            {"raw": "Inj TRAMADOL 100 mg in NS (given in clinic)", "drug": "tramadol", "strength": "100 mg", "route": "IV", "frequency": "stat", "duration": "stat", "administered_in_clinic": true, "legibility": "partial"},
+            {"raw": "Inj HEPARIN 5000 (given in clinic)", "drug": "heparin", "strength": "5000 IU", "route": "SC", "frequency": "stat", "duration": "stat", "administered_in_clinic": true, "legibility": "partial"}
+          ],
+          "investigations_advised": ["CBC", "CRP", "Vitamin D", "Serum creatinine", "X-ray left knee AP/lateral (struck off)"],
+          "plan": ["Ice packs", "Foot elevation", "Review on 10/05/2026"]
+        },
+        {
+          "encounter_id": "P002-E2",
+          "date": "2026-05-02",
+          "date_certain": true,
+          "facility": "St. Philomena's Hospital, Bengaluru",
+          "department": "General Surgery",
+          "doctor": "Dr. Kenneth B D'Cruz (MBBS, MS)",
+          "type": "opd_visit",
+          "visit_type": "First visit",
+          "source_image": "05_philomena_surgery_first_visit_2026-05-02.jpg",
+          "reconciles_chronic_meds": false,
+          "diagnoses": ["Left lower limb cellulitis"],
+          "complaints": ["Left lower limb pain"],
+          "examination": ["O/E - left lower limb cellulitis"],
+          "vitals": {},
+          "medications": [
+            {"raw": "TAB CIPLOX 500 MG 1-0-1 X 5 DAYS", "drug": "ciplox", "strength": "500 mg", "route": "PO", "frequency": "1-0-1", "duration": "5 days", "legibility": "clear"},
+            {"raw": "TAB DALACIN 300 MG 1-0-1 X 5 DAYS", "drug": "dalacin", "strength": "300 mg", "route": "PO", "frequency": "1-0-1", "duration": "5 days", "legibility": "clear"},
+            {"raw": "TAB CALPOL 650MG 1-1-1 X 5 DAYS", "drug": "calpol", "strength": "650 mg", "route": "PO", "frequency": "1-1-1", "duration": "5 days", "legibility": "clear"}
+          ],
+          "investigations_advised": ["Venous Doppler - left lower limb (Dr Justin)", "CBC", "FBS", "HbA1c"],
+          "plan": ["Left lower limb elevation", "Review with report"]
+        },
+        {
+          "encounter_id": "P002-E3",
+          "date": "2026-05-18",
+          "date_certain": true,
+          "facility": "St. Philomena's Hospital, Bengaluru",
+          "department": "General Surgery",
+          "doctor": "Dr. Kenneth B D'Cruz (MBBS, MS)",
+          "type": "opd_visit",
+          "visit_type": "Follow up",
+          "source_image": "06_philomena_surgery_followup_2026-05-18.jpg",
+          "reconciles_chronic_meds": false,
+          "diagnoses": ["Left lower limb cellulitis", "Left lower limb varicose veins"],
+          "complaints": ["Left lower limb pain", "Right knee pain"],
+          "examination": ["O/E - left lower limb cellulitis", "Left lower limb varicose veins"],
+          "vitals": {"height_cm": 150, "weight_kg": 59.8, "temperature_f": 98.3, "pulse": 69, "bp_systolic": 120, "bp_diastolic": 70, "bmi": 26.58, "spo2": 98, "pain_score": 0},
+          "medications": [
+            {"raw": "TAB CIPLOX 500 MG 1-0-1 X 2 WEEKS", "drug": "ciplox", "strength": "500 mg", "route": "PO", "frequency": "1-0-1", "duration": "2 weeks", "legibility": "clear"},
+            {"raw": "TAB DALACIN 300 MG 1-0-1 X 2 WEEKS", "drug": "dalacin", "strength": "300 mg", "route": "PO", "frequency": "1-0-1", "duration": "2 weeks", "legibility": "clear"},
+            {"raw": "TAB CALPOL 650MG 1 SOS FOR PAIN", "drug": "calpol", "strength": "650 mg", "route": "PO", "frequency": "SOS", "duration": "2 weeks", "legibility": "clear"}
+          ],
+          "investigations_advised": [],
+          "plan": ["Class 3 knee-length compression stockings after cellulitis resolves"]
+        }
+      ]
+    },
+    {
+      "patient_id": "P003",
+      "name": "Nishith D",
+      "aliases": ["Mr. Nishith D", "Nishith"],
+      "sex": "M",
+      "dob": "2010-07-01",
+      "dob_estimated": true,
+      "dob_note": "Only age (15Y on 03/01/2026) is documented; mid-year DOB assumed.",
+      "identifiers": [
+        {"system": "SJMCH Hosp. No.", "value": "5341714"}
+      ],
+      "allergies": [],
+      "allergy_status": "not documented",
+      "conditions": [
+        {"name": "Acne vulgaris with post-acne marks (inferred from therapy)", "code": "acne", "source": "Benzoyl peroxide, glycolic acid, tretinoin, clindamycin gel"},
+        {"name": "Palmar hyperhidrosis (inferred from therapy)", "code": "hyperhidrosis", "source": "Aldry lotion to hands"}
+      ],
+      "encounters": [
+        {
+          "encounter_id": "P003-E1",
+          "date": "2025-10-06",
+          "date_certain": false,
+          "date_note": "Handwritten '06/10/2?' - year read as 2025.",
+          "facility": "St. John's Medical College Hospital",
+          "department": "Dermatology, Venereology & Leprosy",
+          "doctor": "Dr. Sumedha Ballal (Associate Professor)",
+          "type": "opd_prescription",
+          "source_image": "07_nishith_dermatology_2025-10-06.jpg",
+          "reconciles_chronic_meds": true,
+          "diagnoses": [],
+          "complaints": [],
+          "vitals": {},
+          "medications": [
+            {"raw": "BENZAC GEL (2.5%) (FACE) LA 0-0-1 NIGHT x 6 mths", "drug": "benzac", "strength": "2.5%", "route": "topical", "frequency": "0-0-1", "duration": "6 months", "instructions": "face, at night", "legibility": "clear"},
+            {"raw": "MOISTUREX SOFT CREAM LA M-N", "drug": "moisturex soft", "strength": "", "route": "topical", "frequency": "1-0-1", "duration": "6 months", "legibility": "clear"},
+            {"raw": "ALDRY LOTION LA 0-0-1", "drug": "aldry", "strength": "", "route": "topical", "frequency": "0-0-1", "duration": "6 months", "legibility": "clear"},
+            {"raw": "GLYCO CREAM 6% LA (NIGHT) - MARKS 0-0-1 x 6 mths", "drug": "glyco 6", "strength": "6%", "route": "topical", "frequency": "0-0-1", "duration": "6 months", "instructions": "night, on marks", "legibility": "clear"}
+          ],
+          "investigations_advised": [],
+          "plan": []
+        },
+        {
+          "encounter_id": "P003-E2",
+          "date": "2026-01-03",
+          "date_certain": true,
+          "facility": "St. John's Medical College Hospital",
+          "department": "Dermatology, Venereology & Leprosy",
+          "doctor": "Dr. Sumedha Ballal (Associate Professor)",
+          "type": "opd_prescription",
+          "source_image": "08_nishith_dermatology_2026-01-03.jpg",
+          "reconciles_chronic_meds": true,
+          "diagnoses": [],
+          "complaints": [],
+          "vitals": {},
+          "medications": [
+            {"raw": "ALDRY LOTION (LA) (Hands) 0-0-1 x 2 months", "drug": "aldry", "strength": "", "route": "topical", "frequency": "0-0-1", "duration": "2 months", "instructions": "hands", "legibility": "clear"},
+            {"raw": "TRETIN 0.025% CREAM (LA) 0-0-1 x 2 months (to start after 1 week) - 12/1/26 onwards", "drug": "tretin", "strength": "0.025%", "route": "topical", "frequency": "0-0-1", "duration": "2 months", "start_date": "2026-01-12", "legibility": "clear"},
+            {"raw": "CLINDAC A GEL (LA) 1-0-1 x 1 week", "drug": "clindac a", "strength": "1%", "route": "topical", "frequency": "1-0-1", "duration": "1 week", "legibility": "clear"}
+          ],
+          "investigations_advised": [],
+          "plan": ["Review after 2 months / SOS"]
+        }
+      ]
+    },
+    {
+      "patient_id": "P004",
+      "name": "Anthony Reddy",
+      "aliases": ["ANTHONY REDDY"],
+      "sex": "M",
+      "dob": "1965-01-01",
+      "dob_estimated": true,
+      "dob_note": "Only age (56Y in June 2021) is documented.",
+      "identifiers": [
+        {"system": "St. Philomena's IP No.", "value": "L3602"},
+        {"system": "St. Philomena's UHID", "value": "20M12863"}
+      ],
+      "allergies": [],
+      "allergy_status": "not documented",
+      "conditions": [
+        {"name": "Lumbar spine surgery (post-operative)", "code": "post_op_spine", "source": "Neurosurgery discharge summary - post-op X-ray LS spine"}
+      ],
+      "encounters": [
+        {
+          "encounter_id": "P004-E1",
+          "date": "2021-06-27",
+          "date_certain": false,
+          "date_note": "Discharge date assumed same as the accompanying prescription (27/06/2021).",
+          "facility": "St. Philomena's Hospital, Bengaluru",
+          "department": "Neuro & Paediatric Neurosurgery",
+          "doctor": "Dr. Sujay Rao (Head of Dept.); Resident Dr. Aishwarya",
+          "type": "discharge_summary",
+          "source_image": "09_anthony_neurosurgery_discharge_2021-06.jpg",
+          "reconciles_chronic_meds": true,
+          "diagnoses": ["Lumbar spine surgery - post-operative (LS spine)"],
+          "complaints": [],
+          "hospital_course": ["Withstood procedure well", "IV fluids, IV antibiotics (Inj. C-Tri [ceftriaxone], Amikacin), analgesics", "Drain removed on POD 6", "Foley's catheter removed on POD 6", "Post-op X-ray LS spine satisfactory", "Stable, conscious and ambulant at discharge"],
+          "condition_at_discharge": "Improved",
+          "vitals": {},
+          "medications": [
+            {"raw": "TAB DOLO 650MG 1-1-1 X 3 DAYS", "drug": "dolo", "strength": "650 mg", "route": "PO", "frequency": "1-1-1", "duration": "3 days", "legibility": "clear"},
+            {"raw": "TAB LYRICA 75 MG 1-0-1 X 2 WEEKS", "drug": "lyrica", "strength": "75 mg", "route": "PO", "frequency": "1-0-1", "duration": "2 weeks", "legibility": "clear"}
+          ],
+          "investigations_advised": [],
+          "plan": ["Review with Dr. Sujay Rao in Neurosurgery OPD after 15 days for suture removal (Mon-Sat 2-4 PM)"],
+          "red_flags_documented": ["severe pain", "discharge from surgical site", "fever"]
+        },
+        {
+          "encounter_id": "P004-E2",
+          "date": "2021-06-27",
+          "date_certain": true,
+          "facility": "St. Philomena's Hospital, Bengaluru",
+          "department": "Neurosurgery",
+          "doctor": "(signature only)",
+          "type": "prescription",
+          "source_image": "10_anthony_prescription_2021-06-27.jpg",
+          "reconciles_chronic_meds": false,
+          "diagnoses": [],
+          "complaints": [],
+          "vitals": {},
+          "medications": [
+            {"raw": "Tab. ULTRACET 1-0-1 x 3 days", "drug": "ultracet", "strength": "37.5/325 mg", "route": "PO", "frequency": "1-0-1", "duration": "3 days", "legibility": "clear"}
+          ],
+          "investigations_advised": [],
+          "plan": ["Alternate day dressing", "LS belt - constant use", "Review after 15 days from date of surgery"]
+        }
+      ]
+    },
+    {
+      "patient_id": "P005",
+      "name": "Deva Prasad",
+      "aliases": ["Mr. Deva Prasad"],
+      "sex": "M",
+      "dob": "1978-01-01",
+      "dob_estimated": true,
+      "dob_note": "Only age (47Y) is documented.",
+      "identifiers": [
+        {"system": "SJMCH Hosp. No.", "value": "4933092"}
+      ],
+      "allergies": [],
+      "allergy_status": "not documented",
+      "conditions": [
+        {"name": "Hyperuricaemia / gout (inferred from febuxostat)", "code": "gout", "source": "Febutaz 40"},
+        {"name": "Vitamin D deficiency (inferred)", "code": "vitamin_d_deficiency", "source": "Vitamin D3 60K + Arachitol"}
+      ],
+      "encounters": [
+        {
+          "encounter_id": "P005-E1",
+          "date": "2025-08-22",
+          "date_certain": false,
+          "date_note": "Date written near the seal is only partly legible ('22/8/2?').",
+          "facility": "St. John's Medical College Hospital",
+          "department": "Orthopaedics",
+          "doctor": "Dr. Mallikarjunaswamy B. (Professor, Orthopaedics)",
+          "type": "opd_prescription",
+          "source_image": "11_deva_prasad_orthopaedics_2025-08.jpg",
+          "reconciles_chronic_meds": true,
+          "diagnoses": [],
+          "complaints": [],
+          "vitals": {},
+          "medications": [
+            {"raw": "T. Febutaz 40mg (30) 1-0-0", "drug": "febutaz", "strength": "40 mg", "route": "PO", "frequency": "1-0-0", "duration": "30 days", "quantity": 30, "legibility": "clear"},
+            {"raw": "T. Vit D 60K (..) 0-1-0 (weekly?)", "drug": "vitamin d3 60k", "strength": "60000 IU", "route": "PO", "frequency": "weekly", "duration": "8 weeks", "legibility": "partial", "note": "Quantity circled/over-written; weekly dosing assumed."},
+            {"raw": "T. ???? ULTRA 1-0-0", "drug": "unknown", "strength": "", "route": "PO", "frequency": "1-0-0", "duration": "30 days", "legibility": "illegible"},
+            {"raw": "T. Neuro???? 0-0-1", "drug": "unknown", "strength": "", "route": "PO", "frequency": "0-0-1", "duration": "30 days", "legibility": "illegible"},
+            {"raw": "Inj. Arachitol 6L IM stat", "drug": "arachitol 6l", "strength": "600000 IU", "route": "IM", "frequency": "stat", "duration": "stat", "legibility": "partial"},
+            {"raw": "(?) ... gel (12)", "drug": "unknown", "strength": "", "route": "topical", "frequency": "", "duration": "", "legibility": "illegible"}
+          ],
+          "investigations_advised": [],
+          "plan": []
+        }
+      ]
+    },
+    {
+      "patient_id": "P006",
+      "name": "Sagay Josephine Leela",
+      "aliases": ["Leela", "Mrs. Leela", "S. J. Leela"],
+      "sex": "F",
+      "dob": "1971-01-09",
+      "dob_estimated": true,
+      "dob_note": "Estimated from 'Age: 50 years 3 months' on 09/04/2021. NOTE: SJMCH 2022 slip records age 57 - inconsistent; flagged for verification.",
+      "identifiers": [
+        {"system": "St. Philomena's UHID", "value": "19F7213"},
+        {"system": "SJMCH Hosp. No.", "value": "4589524"}
+      ],
+      "identity_linkage_note": "Records under 'Mrs. Leela' (Dr Kenneth D'Cruz clinic, 2018), 'Leela' (St. Philomena's UHID 19F7213, 2021) and 'Sagay Josephine Leela' (SJMCH 4589524, 2022) were merged by name match. Verify before clinical use.",
+      "allergies": [],
+      "allergy_status": "not documented",
+      "conditions": [
+        {"name": "H. pylori infection / acid-peptic disease (inferred from triple therapy)", "code": "acid_peptic_disease", "source": "Amoxicillin + clarithromycin + esomeprazole (2018)"},
+        {"name": "? Post-inflammatory hyperpigmentation", "code": "pigmentation", "source": "Dermatology 09/04/2021"},
+        {"name": "Generalised anxiety disorder + grief", "code": "anxiety", "source": "Psychiatry 11/11/2021"},
+        {"name": "Functional bowel disorder / IBS (inferred)", "code": "ibs", "source": "Mebeverine + low-dose amitriptyline (2022)"}
+      ],
+      "encounters": [
+        {
+          "encounter_id": "P006-E1",
+          "date": "2018-04-13",
+          "date_certain": true,
+          "facility": "Dr. Kenneth D'Cruz Clinic, St. Thomas Town",
+          "department": "Surgery (consultant surgeon)",
+          "doctor": "Dr. Kenneth D'Cruz (MS)",
+          "type": "clinic_prescription",
+          "source_image": "12_leela_surgeon_2018-04-13.jpg",
+          "reconciles_chronic_meds": true,
+          "diagnoses": [],
+          "complaints": [],
+          "vitals": {},
+          "medications": [
+            {"raw": "Cap. AMOXYCILLIN 500mg 2-0-2 for 2 wks (1/2 hr before food)", "drug": "amoxycillin", "strength": "500 mg", "route": "PO", "frequency": "2-0-2", "duration": "2 weeks", "instructions": "1/2 hour before food", "legibility": "clear"},
+            {"raw": "Tab. CLARIBID 500mg 1-0-1 for 2 wks (1/2 hr before food)", "drug": "claribid", "strength": "500 mg", "route": "PO", "frequency": "1-0-1", "duration": "2 weeks", "instructions": "1/2 hour before food", "legibility": "partial", "note": "Frequency stroke ambiguous (1-1-1 vs 1-0-1); 1-0-1 is the standard regimen."},
+            {"raw": "Tab. NEXPRO RD 40 1-0-1 for 2 wks (1/2 hr before food)", "drug": "nexpro rd", "strength": "40 mg", "route": "PO", "frequency": "1-0-1", "duration": "2 weeks", "instructions": "1/2 hour before food", "legibility": "clear"},
+            {"raw": "Tab. UDILIV 300mg 1-0-1 for 2 wks (after food)", "drug": "udiliv", "strength": "300 mg", "route": "PO", "frequency": "1-0-1", "duration": "2 weeks", "instructions": "after food", "legibility": "clear"}
+          ],
+          "investigations_advised": [],
+          "plan": []
+        },
+        {
+          "encounter_id": "P006-E2",
+          "date": "2021-04-09",
+          "date_certain": true,
+          "facility": "St. Philomena's Hospital, Bengaluru",
+          "department": "Dermatology",
+          "doctor": "Dr. Rakesh Darla (MBBS, DDVL)",
+          "type": "opd_prescription",
+          "source_image": "13_leela_dermatology_2021-04-09.jpg",
+          "reconciles_chronic_meds": false,
+          "diagnoses": ["? Post-inflammatory hyperpigmentation (PIH)"],
+          "complaints": [],
+          "vitals": {},
+          "medications": [
+            {"raw": "BILUMA ADVANCE BODY LOTION - twice daily", "drug": "biluma advance", "strength": "", "route": "topical", "frequency": "1-0-1", "duration": "1 month", "legibility": "clear"},
+            {"raw": "UV AVO PRO 30 SPF - every day", "drug": "uv avo", "strength": "SPF 30", "route": "topical", "frequency": "1-0-0", "duration": "1 month", "legibility": "clear"},
+            {"raw": "CETAPHIL MOISTURISING LOTION - every day", "drug": "cetaphil", "strength": "", "route": "topical", "frequency": "1-0-0", "duration": "1 month", "legibility": "clear"},
+            {"raw": "IG GLOW ULTRA 0-0-1 x 1 month", "drug": "ig glow ultra", "strength": "", "route": "PO", "frequency": "0-0-1", "duration": "1 month", "legibility": "clear"},
+            {"raw": "YUGARD EYE CREAM 0-0-1 x 1 month", "drug": "yugard", "strength": "", "route": "topical", "frequency": "0-0-1", "duration": "1 month", "legibility": "clear"},
+            {"raw": "CETAPHIL DAM CREAM - every day", "drug": "cetaphil dam", "strength": "", "route": "topical", "frequency": "1-0-0", "duration": "1 month", "legibility": "clear"}
+          ],
+          "investigations_advised": [],
+          "plan": []
+        },
+        {
+          "encounter_id": "P006-E3",
+          "date": "2021-11-11",
+          "date_certain": true,
+          "facility": "St. Philomena's Hospital, Bengaluru",
+          "department": "Psychiatry",
+          "doctor": "Dr. Sushma N (MD Psychiatry)",
+          "type": "opd_prescription",
+          "source_image": "14_leela_psychiatry_2021-11-11.jpg",
+          "reconciles_chronic_meds": false,
+          "diagnoses": ["Generalised anxiety disorder (GAD)", "Grief"],
+          "complaints": ["Low mood", "Increased anxiety", "Physiological anxiety symptoms", "Disturbed sleep", "Reduced appetite (5-6 months)"],
+          "history": ["Stressors: mother's death, husband's ill-health", "No known co-morbidities"],
+          "vitals": {},
+          "medications": [
+            {"raw": "TAB NEXITO 5MG 0-0-1 x 3 days then start 10mg", "drug": "nexito", "strength": "5 mg", "route": "PO", "frequency": "0-0-1", "duration": "3 days", "legibility": "clear"},
+            {"raw": "TAB NEXITO 10 MG 0-0-1 x 10 days from 14th Nov onwards", "drug": "nexito", "strength": "10 mg", "route": "PO", "frequency": "0-0-1", "duration": "10 days", "start_date": "2021-11-14", "legibility": "clear"},
+            {"raw": "TAB LONAZEP 0.5 MG 0-0-1 x 10 days", "drug": "lonazep", "strength": "0.5 mg", "route": "PO", "frequency": "0-0-1", "duration": "10 days", "legibility": "clear"}
+          ],
+          "investigations_advised": [],
+          "plan": ["Follow up on 20-Nov-2021 (Tue/Thu/Sat 10am-1pm)"]
+        },
+        {
+          "encounter_id": "P006-E4",
+          "date": "2022-09-29",
+          "date_certain": true,
+          "facility": "St. John's Medical College Hospital",
+          "department": "Gastroenterology",
+          "doctor": "Dr. Mallikarjun (Professor, Gastroenterology)",
+          "type": "opd_prescription",
+          "source_image": "15_leela_gastroenterology_2022-09-29.jpg",
+          "reconciles_chronic_meds": false,
+          "diagnoses": [],
+          "complaints": [],
+          "vitals": {},
+          "recorded_age": 57,
+          "medications": [
+            {"raw": "Cap. MEBEZ-SR 200mg 1-0-1 x 1 week (before food)", "drug": "mebez-sr", "strength": "200 mg", "route": "PO", "frequency": "1-0-1", "duration": "1 week", "instructions": "before food", "legibility": "clear"},
+            {"raw": "Tab. TRYPTOMER 10mg 0-0-1 x 1 month (after food)", "drug": "tryptomer", "strength": "10 mg", "route": "PO", "frequency": "0-0-1", "duration": "1 month", "instructions": "after food", "legibility": "clear"}
+          ],
+          "investigations_advised": [],
+          "plan": []
+        }
+      ]
+    },
+    {
+      "patient_id": "P007",
+      "name": "Yellamma",
+      "aliases": ["Ms. Yellamma"],
+      "sex": "F",
+      "dob": "1944-01-01",
+      "dob_estimated": true,
+      "dob_note": "Only age (80Y in 2024) is documented.",
+      "identifiers": [
+        {"system": "SJMCH Hosp. No.", "value": "2560585"}
+      ],
+      "allergies": [],
+      "allergy_status": "not documented",
+      "conditions": [
+        {"name": "Osteoarthritis / joint disease (inferred from glucosamine)", "code": "osteoarthritis", "source": "Lubrijoint 750"},
+        {"name": "Dyslipidaemia / cardiovascular risk (inferred)", "code": "dyslipidaemia", "source": "Rosuvastatin + aspirin"}
+      ],
+      "encounters": [
+        {
+          "encounter_id": "P007-E1",
+          "date": "2024-09-01",
+          "date_certain": false,
+          "date_note": "Date stamp partly hidden ('?/9/24').",
+          "facility": "St. John's Medical College Hospital",
+          "department": "Clinical Immunology & Rheumatology",
+          "doctor": "Dr. Vineeta Shobha (Professor)",
+          "type": "opd_prescription",
+          "source_image": "16_yellamma_rheumatology_2024-09.jpg",
+          "reconciles_chronic_meds": true,
+          "diagnoses": [],
+          "complaints": [],
+          "vitals": {},
+          "medications": [
+            {"raw": "Tab SHELCAL HD (500mg) 0-1-0 x 6 months", "drug": "shelcal hd", "strength": "500 mg", "route": "PO", "frequency": "0-1-0", "duration": "6 months", "legibility": "clear"},
+            {"raw": "Tab ROSUVAS 10mg 0-0-1 x 6 months", "drug": "rosuvas", "strength": "10 mg", "route": "PO", "frequency": "0-0-1", "duration": "6 months", "legibility": "clear"},
+            {"raw": "Tab ECOSPRIN 75mg 0-1-0 x 6 months", "drug": "ecosprin", "strength": "75 mg", "route": "PO", "frequency": "0-1-0", "duration": "6 months", "legibility": "clear"},
+            {"raw": "Cap EVION LC 1-0-0 x 1 month (30) / 15 days", "drug": "evion lc", "strength": "", "route": "PO", "frequency": "1-0-0", "duration": "1 month", "legibility": "partial"},
+            {"raw": "Tab LUBRIJOINT 750mg 1-0-0 x 6 months", "drug": "lubrijoint", "strength": "750 mg", "route": "PO", "frequency": "1-0-0", "duration": "6 months", "legibility": "clear"}
+          ],
+          "investigations_advised": ["Investigations before next review"],
+          "plan": ["Review after 6 months with investigations"]
+        }
+      ]
+    }
+  ]
+}

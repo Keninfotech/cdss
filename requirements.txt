@@ -1,0 +1,12 @@
+streamlit>=1.50
+pandas>=2.0
+numpy>=1.24
+scikit-learn>=1.3
+plotly>=5.18
+Pillow>=10.0
+tabulate>=0.9
+pytest>=7.0
+# optional - LLM summaries, explanations and handwriting OCR
+anthropic>=0.40
+# optional - offline OCR of printed forms (also needs the tesseract binary)
+# pytesseract>=0.3.10
