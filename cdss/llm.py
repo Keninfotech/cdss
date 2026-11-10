@@ -1,7 +1,11 @@
-"""LLM backend (Google Gemini or Anthropic Claude) for summarisation, RAG answers and prescription OCR.
+"""LLM backend for summarisation, RAG answers and prescription OCR.
 
-Everything in the CDSS works WITHOUT an API key - template / extractive fallbacks are used.
-Add GEMINI_API_KEY (free at https://aistudio.google.com/) or ANTHROPIC_API_KEY in your .env file.
+Supported providers (priority order):
+  1. Google Gemini  (GEMINI_API_KEY in .env  — free tier at aistudio.google.com)
+  2. Anthropic Claude  (ANTHROPIC_API_KEY in .env)
+  3. Ollama  (local model — OLLAMA_MODEL in .env, e.g. qwen2.5-vl:7b)
+  
+Everything in the CDSS works WITHOUT any API key — template / extractive fallbacks are used.
 """
 
 from __future__ import annotations
@@ -43,7 +47,22 @@ load_env()
 
 def available() -> bool:
     load_env()
+    return bool(os.environ.get("GEMINI_API_KEY") or os.environ.get("ANTHROPIC_API_KEY") or _ollama_running())
+
+
+def available_cloud() -> bool:
+    load_env()
     return bool(os.environ.get("GEMINI_API_KEY") or os.environ.get("ANTHROPIC_API_KEY"))
+
+
+def _ollama_running() -> bool:
+    """Check if a local Ollama instance is reachable."""
+    try:
+        import requests
+        r = requests.get("http://localhost:11434/api/tags", timeout=2)
+        return r.status_code == 200
+    except Exception:
+        return False
 
 
 def provider_name() -> str:
@@ -54,6 +73,9 @@ def provider_name() -> str:
     if os.environ.get("ANTHROPIC_API_KEY"):
         model = os.environ.get("CDSS_LLM_MODEL", "claude-sonnet-4-5")
         return f"Claude ({model})"
+    if _ollama_running():
+        model = os.environ.get("OLLAMA_MODEL", "qwen2.5:3b")
+        return f"Ollama ({model}) [offline]"
     return "offline (rule/template mode)"
 
 
@@ -94,6 +116,23 @@ def _anthropic_client():
     return anthropic.Anthropic()
 
 
+def _ollama_complete(prompt: str, system: str = "", max_tokens: int = 900, model: str | None = None) -> str:
+    """Send a text prompt to the locally running Ollama instance."""
+    import requests
+    model = model or os.environ.get("OLLAMA_MODEL", "qwen2.5-vl:7b")
+    payload = {
+        "model": model,
+        "prompt": prompt,
+        "system": system,
+        "stream": False,
+        "options": {"temperature": 0.2, "num_predict": max_tokens},
+    }
+    resp = requests.post("http://localhost:11434/api/generate", json=payload, timeout=120)
+    if resp.status_code != 200:
+        raise RuntimeError(f"Ollama error ({resp.status_code}): {resp.text[:200]}")
+    return resp.json().get("response", "").strip()
+
+
 def complete(prompt: str, system: str = SYSTEM_PROMPT, max_tokens: int = 900, model: str | None = None) -> str:
     load_env()
     if os.environ.get("GEMINI_API_KEY"):
@@ -105,7 +144,9 @@ def complete(prompt: str, system: str = SYSTEM_PROMPT, max_tokens: int = 900, mo
             messages=[{"role": "user", "content": prompt}],
         )
         return "".join(b.text for b in msg.content if getattr(b, "type", "") == "text").strip()
-    raise RuntimeError("No LLM API key configured (set GEMINI_API_KEY or ANTHROPIC_API_KEY in .env)")
+    elif _ollama_running():
+        return _ollama_complete(prompt, system=system, max_tokens=max_tokens, model=model)
+    raise RuntimeError("No LLM available. Set GEMINI_API_KEY or ANTHROPIC_API_KEY in .env, or start Ollama.")
 
 
 def vision_json(image_path: str | Path, instruction: str, max_tokens: int = 2500, model: str | None = None) -> dict:
@@ -138,8 +179,12 @@ def vision_json(image_path: str | Path, instruction: str, max_tokens: int = 2500
             ]}],
         )
         text = "".join(b.text for b in msg.content if getattr(b, "type", "") == "text")
+    elif _ollama_running():
+        # Ollama vision: handled in ocr.py's extract_with_ollama (uses /api/generate with images)
+        # For the llm.py path, fall back to text-only with the instruction
+        text = _ollama_complete(instruction, system="Output JSON only.", max_tokens=max_tokens, model=model)
     else:
-        raise RuntimeError("No LLM API key configured (set GEMINI_API_KEY or ANTHROPIC_API_KEY in .env)")
+        raise RuntimeError("No LLM available. Set GEMINI_API_KEY or ANTHROPIC_API_KEY in .env, or start Ollama.")
 
     try:
         return json.loads(text)

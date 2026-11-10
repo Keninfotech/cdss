@@ -6,7 +6,12 @@ plotly>=5.18
 Pillow>=10.0
 tabulate>=0.9
 pytest>=7.0
+# recommended - improved offline OCR image pre-processing
+opencv-python>=4.8
 # optional - LLM summaries, explanations and handwriting OCR
 anthropic>=0.40
-# optional - offline OCR of printed forms (also needs the tesseract binary)
+# optional - offline deep-learning OCR (much better than Tesseract for prescriptions)
+# paddlepaddle>=2.6
+# paddleocr>=2.7
+# optional - classical offline OCR (also needs the tesseract binary)
 # pytesseract>=0.3.10
