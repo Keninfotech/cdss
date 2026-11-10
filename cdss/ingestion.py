@@ -109,7 +109,7 @@ def next_encounter_id(patient: dict) -> str:
 
 
 def store_source_image(uploaded_path: Path | str, patient: dict, enc_date: str, label: str) -> str:
-    """Copy an uploaded prescription image into the project root and return its file name."""
+    """Copy an uploaded prescription image into the prescriptions folder and return its file name."""
     uploaded_path = Path(uploaded_path)
     existing = sorted(IMAGE_DIR.glob("[0-9][0-9]_*.*"))
     seq = (max(int(p.name[:2]) for p in existing) + 1) if existing else 1

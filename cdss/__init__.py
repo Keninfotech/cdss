@@ -15,7 +15,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = PROJECT_ROOT / "data"
 KB_DIR = DATA_DIR / "knowledge_base"
 PATIENTS_FILE = DATA_DIR / "patients.json"
-IMAGE_DIR = PROJECT_ROOT  # source prescription images are kept in the project root
+IMAGE_DIR = PROJECT_ROOT / "prescriptions"  # source prescription images are kept in the prescriptions folder
 
 DISCLAIMER = (
     "Clinical decision SUPPORT only. Outputs are generated from transcribed records and an "

@@ -13,13 +13,13 @@ presentation and suggests personalised, explainable treatment options in a Strea
 
 ---
 
-## 1. Primary data: the prescription images (project root)
+## 1. Primary data: the prescription images (prescriptions folder)
 
-The 16 source documents are kept in the **project root** and every encounter in
+The 16 source documents are kept in the **`prescriptions` folder** and every encounter in
 `data/patients.json` points to its image (`source_image`). The dashboard shows each image next
 to its transcription.
 
-| # | Image (root folder) | Patient | Document |
+| # | Image (prescriptions folder) | Patient | Document |
 |---|---|---|---|
 | 01 | `01_asuntha_discharge_summary_2025-06.jpg` | Asuntha Anandraj (P001) | SJMCH Surgery discharge summary (CT s/o CLD, CBD stent) |
 | 02 | `02_asuntha_pharmacy_indent_2025-08-28.jpg` | Asuntha Anandraj (P001) | Inpatient pharmacy indent (cefuroxime, dalteparin) |
@@ -41,7 +41,7 @@ to its transcription.
 Handwritten entries that could not be read with confidence keep their raw text and are marked
 `legibility: partial | illegible`. The dashboard lists them under **Data quality** so they can be
 checked against the image. New images uploaded through the dashboard (**Add record** tab) are
-also saved into the project root and linked to the new encounter.
+also saved into the prescriptions folder and linked to the new encounter.
 
 Phone numbers and street addresses visible in the images are **not** copied into the structured
 data. These are real patient documents: do not publish this repository.
@@ -62,7 +62,7 @@ images (root) ──► 1. Ingestion & processing ──► 2. Recommendation en
 
 | Methodology block | Module | What it does |
 |---|---|---|
-| Data ingestion from multiple sources | `cdss/ingestion.py`, `cdss/ocr.py` | Loads the record store. New images are read with Claude vision, falling back to Tesseract and then manual entry. Images are saved to the root folder. |
+| Data ingestion from multiple sources | `cdss/ingestion.py`, `cdss/ocr.py` | Loads the record store. New images are read with Claude vision, falling back to Tesseract and then manual entry. Images are saved to the prescriptions folder. |
 | Data fusion / unified patient ID | `ingestion.match_patient` | Matches records on UHID or hospital number first, then on fuzzy name and alias matching. Leela's three name variants across three facilities are merged this way, and an age inconsistency is flagged. |
 | Preprocessing & cleaning | `cdss/preprocessing.py` | Maps brand names to generic components and drug classes (100+ entries). Parses `1-0-1`, `½-0-0`, `18U-0-18U`, HS, SOS, stat and weekly doses, plus durations. Derives start and end dates, handles renewals and supersession, and produces a data-quality report. |
 | Feature engineering | `cdss/features.py` | Builds the medication-change history (started, stopped, switched within class, dose changed), daily polypharmacy counts, antibiotic courses, recurring diagnoses, vitals trends and cohort features. |
@@ -121,7 +121,7 @@ to cite them and not to invent facts.
 
 ```
 cdss_project/
-├── 01_...jpg … 16_...jpg          # source prescription images (primary data, root folder)
+├── prescriptions/                 # source prescription images (primary data, 01_...jpg … 16_...jpg)
 ├── app.py                         # Streamlit dashboard (block 5)
 ├── run_report.py                  # batch pipeline / reports
 ├── requirements.txt

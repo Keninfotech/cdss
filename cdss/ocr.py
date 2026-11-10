@@ -44,7 +44,8 @@ def extract_with_llm(image_path: str | Path) -> dict:
 
 
 def extract_with_tesseract(image_path: str | Path) -> dict:
-    import pytesseract
+    import importlib
+    pytesseract = importlib.import_module("pytesseract")
     from PIL import Image, ImageOps
 
     img = ImageOps.grayscale(Image.open(image_path))
@@ -55,13 +56,13 @@ def extract_with_tesseract(image_path: str | Path) -> dict:
 def extract(image_path: str | Path) -> dict:
     if llm.available():
         try:
-            return {"engine": "claude-vision", **extract_with_llm(image_path)}
+            return {"engine": llm.provider_name(), **extract_with_llm(image_path)}
         except Exception as exc:  # fall through to tesseract
             err = str(exc)
         else:
             err = ""
     else:
-        err = "ANTHROPIC_API_KEY not set"
+        err = "No LLM API key set in .env (GEMINI_API_KEY or ANTHROPIC_API_KEY)"
     try:
         return {"engine": "tesseract", "warning": err, **extract_with_tesseract(image_path)}
     except Exception as exc:

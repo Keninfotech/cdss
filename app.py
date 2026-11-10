@@ -69,7 +69,7 @@ allergy_txt = st.sidebar.text_input("Allergies (comma separated)", value=", ".jo
                                     help="Recorded status: " + patient.get("allergy_status", "unknown"))
 allergies = [a.strip() for a in allergy_txt.split(",") if a.strip()]
 st.sidebar.markdown("---")
-st.sidebar.write("LLM:", "connected" if llm.available() else "offline (rule/template mode)")
+st.sidebar.write("LLM:", f"connected - {llm.provider_name()}" if llm.available() else "offline (rule/template mode)")
 st.sidebar.caption(DISCLAIMER)
 
 # ----------------------------------------------------------------------------- computations
@@ -292,7 +292,7 @@ with tabs[5]:
 # ============================================================================ 7 add record
 with tabs[6]:
     st.subheader("Add a new prescription image")
-    st.caption("The image is stored in the project root folder and linked to the encounter. Extraction uses Claude vision when an API key is set, otherwise Tesseract or manual entry.")
+    st.caption("The image is stored in the prescriptions folder and linked to the encounter. Extraction uses Claude vision when an API key is set, otherwise Tesseract or manual entry.")
     up = st.file_uploader("Prescription / discharge summary image", type=["jpg", "jpeg", "png"])
     if up:
         st.image(up, width=360)
@@ -319,6 +319,6 @@ with tabs[6]:
                 tgt = get_patient(load_patients(), target)
                 record["source_image"] = store_source_image(tmp, tgt, record.get("date", enc_date), record.get("department") or "record")
                 eid = add_encounter(target, record)
-                st.success(f"Saved {eid}; image stored as {record['source_image']} in the project root.")
+                st.success(f"Saved {eid}; image stored as {record['source_image']} in the prescriptions folder.")
                 st.session_state.pop("extracted", None)
                 st.cache_data.clear()
